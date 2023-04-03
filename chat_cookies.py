@@ -32,13 +32,16 @@ for cookie in cookies:
 driver.refresh()
 driver.get('https://poe.com/login')
 time.sleep(8)
+chatGPT = driver.find_element(By.XPATH, '//*[@id="__next"]/div[1]/aside/div/div/section[1]/a[5]')
+ActionChains(driver).click(chatGPT).perform()
 
 questions =open('./question.txt','r',encoding='utf-8').readlines()
-qs=questions[4005:]
+qs=questions[4390:]
 i=0
 f=open('./corpus.txt','a',encoding='utf-8')
 
 while i<10000:
+
     text = driver.find_element(By.XPATH,
                         '//*[@id="__next"]/div[1]/section/footer/div/div[2]/textarea')
     driver.implicitly_wait(3)
@@ -46,7 +49,7 @@ while i<10000:
      .send_keys(qs[i]).perform()
     send=driver.find_element(By.XPATH,'//*[@id="__next"]/div[1]/section/footer/div/div[3]')
     ActionChains(driver).click(send).perform()
-    time.sleep(random.randint(30,40))
+    time.sleep(random.randint(25,35))
     driver.refresh()
     html=driver.page_source
     html =etree.HTML(html)
@@ -58,7 +61,7 @@ while i<10000:
             # print(text)
             f.write(str(text)+'\n')
     i+=1
-    if i%100==0:
+    if i%20==0:
         print(i)
     if i==1000:
         break
@@ -78,6 +81,15 @@ f.close()
 # go=driver.find_element(By.XPATH,'//*[@id="__next"]/main/div/button[1]')
 # ActionChains(driver).click(go).perform()
 
+"""
+[{'domain': 'poe.com', 'expiry': 1714995166, 'httpOnly': True, 'name': 'p-b', 'path': '/', 'sameSite': 'Lax', 'secure': True, 'value': 'xik2Yc65qoKwuw-i3hXg2g%3D%3D'}]
+[{'domain': 'poe.com', 'expiry': 1714995629, 'httpOnly': True, 'name': 'p-b', 'path': '/', 'sameSite': 'Lax', 'secure': True, 'value': '0oclmKfSmfT9mQc0uru1GQ%3D%3D'}]
+[{'domain': 'poe.com', 'expiry': 1714995779, 'httpOnly': True, 'name': 'p-b', 'path': '/', 'sameSite': 'Lax', 'secure': True, 'value': 'bE5QTyOC4tYpS-U7tZmVXA%3D%3D'}]
+[{'domain': 'poe.com', 'expiry': 1714995866, 'httpOnly': True, 'name': 'p-b', 'path': '/', 'sameSite': 'Lax', 'secure': True, 'value': 'c5rrxtu7c9pcF3ZFgmDfnQ%3D%3D'}]
+[{'domain': 'poe.com', 'expiry': 1714996206, 'httpOnly': True, 'name': 'p-b', 'path': '/', 'sameSite': 'Lax', 'secure': True, 'value': 't5NZqW-gnXM9CNwVKjQqFA%3D%3D'}]
+
+
+"""
 
 
 

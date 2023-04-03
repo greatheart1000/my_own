@@ -23,7 +23,7 @@ driver.maximize_window()
 
 input =driver.find_element(By.XPATH,'//*[@id="__next"]/main/div/div[2]/div[1]/form/input')
 ActionChains(driver).move_to_element(input).pause(1).click_and_hold().pause(1)\
-.send_keys("2542492895").perform()
+.send_keys("4807907722").perform()
 time.sleep(3)
 go=driver.find_element(By.XPATH,'//*[@id="__next"]/main/div/button[1]')
 ActionChains(driver).click(go).perform()
@@ -31,7 +31,7 @@ ActionChains(driver).click(go).perform()
 time.sleep(3)
 code =driver.find_element(By.XPATH,'//*[@id="__next"]/main/div/div[3]/form/input')
 ActionChains(driver).move_to_element(code).pause(1).click_and_hold().pause(1)\
-.send_keys("668589").perform()
+.send_keys("259378").perform()
 time.sleep(3)
 login =driver.find_element(By.XPATH,'//*[@id="__next"]/main/div/button[2]/div')
 ActionChains(driver).click(login).perform()
